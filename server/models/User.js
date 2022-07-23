@@ -4,17 +4,16 @@ const UserSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     email: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     password: {
       type: String,
-      require: true,
     },
     img: {
       type: String,
@@ -23,11 +22,15 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    subscriberdUsers: {
+    subscribedUsers: {
       type: [String],
     },
+    fromGoogle: {
+      type: Boolean,
+      default: false,
+    },
   },
-  { timeseries: true }
+  { timestamps: true }
 );
 
 export default mongoose.model("User", UserSchema);
