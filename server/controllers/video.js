@@ -67,8 +67,20 @@ export const addView = async (req, res, next) => {
     next(err);
   }
 };
-export const trend = async (req, res, next) => {};
+
+export const trend = async (req, res, next) => {
+  try {
+    const videos = await Video.find().sort({ views: -1 });
+    res.status(200).json(videos);
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const random = async (req, res, next) => {};
+
 export const sub = async (req, res, next) => {};
+
 export const getByTag = async (req, res, next) => {};
+
 export const search = async (req, res, next) => {};
