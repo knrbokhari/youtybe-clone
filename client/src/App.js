@@ -21,10 +21,10 @@ function App() {
 
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <Navbar />
       <Container>
         <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
         <Main>
-          <Navbar />
           <Wrapper>video</Wrapper>
         </Main>
       </Container>

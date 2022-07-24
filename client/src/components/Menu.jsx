@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import MyTube from "../img/logo.png";
 import HomeIcon from "@mui/icons-material/Home";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
@@ -24,7 +23,7 @@ const Container = styled.div`
   font-size: 14px;
   position: sticky;
   top: 0;
-  background-color: ${({ theme }) => theme.bg};
+  background-color: ${({ theme }) => theme.bgLighter};
   color: ${({ theme }) => theme.text};
 `;
 
@@ -32,24 +31,12 @@ const Wrapper = styled.div`
   padding: 18px 26px;
 `;
 
-const Logo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: bold;
-  margin-bottom: 25px;
-`;
-
-const Img = styled.img`
-  height: 25px;
-`;
-
 const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
   cursor: pointer;
-  padding: 7.5px 0px;
+  padding: 7.5px 5px;
   &:hover {
     background-color: ${({ theme }) => theme.soft};
   }
@@ -86,10 +73,6 @@ const Menu = ({ darkMode, setDarkMode }) => {
   return (
     <Container>
       <Wrapper>
-        <Logo>
-          <Img src={MyTube} />
-          MyTube
-        </Logo>
         <Item>
           <HomeIcon />
           Home
