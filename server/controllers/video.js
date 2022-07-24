@@ -56,7 +56,17 @@ export const getVideo = async (req, res, next) => {
     next(err);
   }
 };
-export const addView = async (req, res, next) => {};
+
+export const addView = async (req, res, next) => {
+  try {
+    await Video.findByIdAndUpdate(req.params.id, {
+      $inc: { views: 1 },
+    });
+    res.status(200).json("The view has been increased.");
+  } catch (err) {
+    next(err);
+  }
+};
 export const trend = async (req, res, next) => {};
 export const random = async (req, res, next) => {};
 export const sub = async (req, res, next) => {};
