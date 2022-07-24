@@ -2,6 +2,7 @@ import express from "express";
 import {
   addVideo,
   addView,
+  deleteVideo,
   getByTag,
   getVideo,
   random,
@@ -21,7 +22,7 @@ router.post("/", verifyToken, addVideo);
 router.put("/:id", verifyToken, updateVideo);
 
 // delete a video
-router.delete("/:id", verifyToken, addVideo);
+router.delete("/:id", verifyToken, deleteVideo);
 
 // get a video
 router.get("/find/:id", getVideo);
