@@ -54,4 +54,4 @@ export const signin = async (req, res, next) => {
   }
 };
 
-// export const signup = async (req, res) => {}
+// export const googleAuth = async (req, res) => {}
