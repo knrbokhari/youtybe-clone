@@ -75,8 +75,18 @@ export const unsubscribe = async (req, res, next) => {
   }
 };
 
-export const like = (req, res) => {
-  res.json("");
+export const like = async (req, res, next) => {
+  const id = req.user.id;
+  const videoId = req.params.videoId;
+  try {
+    await Video.findByIdAndUpdate(videoId, {
+      $addToSet: { likes: id },
+      $pull: { dislikes: id },
+    });
+    res.status(200).json("The video has been liked.");
+  } catch (err) {
+    next(err);
+  }
 };
 
 export const dislike = (req, res) => {
