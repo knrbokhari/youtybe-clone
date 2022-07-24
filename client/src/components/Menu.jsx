@@ -24,8 +24,8 @@ const Container = styled.div`
   font-size: 14px;
   position: sticky;
   top: 0;
-  background-color: black;
-  color: white;
+  background-color: ${({ theme }) => theme.bg};
+  color: ${({ theme }) => theme.text};
 `;
 
 const Wrapper = styled.div`
@@ -82,7 +82,7 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-const Menu = () => {
+const Menu = ({ darkMode, setDarkMode }) => {
   return (
     <Container>
       <Wrapper>
@@ -123,6 +123,7 @@ const Menu = () => {
           </Login>
           <Hr />
         </>
+        <Title>BEST OF MYTUBE</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
           Music
@@ -161,9 +162,9 @@ const Menu = () => {
           <HelpOutlineOutlinedIcon />
           Help
         </Item>
-        <Item>
+        <Item onClick={() => setDarkMode(!darkMode)}>
           <SettingsBrightnessOutlinedIcon />
-          Dark Mode
+          {darkMode ? "Light" : "Dark"} Mode
         </Item>
       </Wrapper>
     </Container>
