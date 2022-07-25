@@ -25,13 +25,25 @@ const Container = styled.div`
   top: 0;
   background-color: ${({ theme }) => theme.bgLighter};
   color: ${({ theme }) => theme.text};
-  @media (max-width: 767px) {
+  @media (max-width: 575.98px) {
     display: none;
   }
 `;
 
-const Wrapper = styled.div`
+const LgWrapper = styled.div`
+  display: none;
   padding: 18px 26px;
+  @media (min-width: 992px) and (max-width: 1991.98px) {
+    display: block;
+  }
+`;
+
+const SmWrapper = styled.div`
+  display: none;
+  padding: 10px 10px;
+  @media (min-width: 575.98px) and (max-width: 991.98px) {
+    display: block;
+  }
 `;
 
 const Item = styled.div`
@@ -43,7 +55,12 @@ const Item = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.soft};
   }
+  @media (min-width: 575.98px) and (max-width: 991.98px) {
+    flex-direction: column;
+  }
 `;
+
+const Text = styled.p``;
 
 const Hr = styled.hr`
   margin: 15px 0px;
@@ -75,7 +92,7 @@ const Title = styled.h2`
 const Menu = ({ darkMode, setDarkMode }) => {
   return (
     <Container>
-      <Wrapper>
+      <LgWrapper>
         <Item>
           <HomeIcon />
           Home
@@ -152,7 +169,29 @@ const Menu = ({ darkMode, setDarkMode }) => {
           <SettingsBrightnessOutlinedIcon />
           {darkMode ? "Light" : "Dark"} Mode
         </Item>
-      </Wrapper>
+      </LgWrapper>
+      <SmWrapper>
+        <Item>
+          <HomeIcon />
+          <Text>Home</Text>
+        </Item>
+        <Item>
+          <ExploreOutlinedIcon />
+          <Text>Explore</Text>
+        </Item>
+        <Item>
+          <SubscriptionsOutlinedIcon />
+          <Text>Subscriptions</Text>
+        </Item>
+        <Item>
+          <VideoLibraryOutlinedIcon />
+          <Text>Library</Text>
+        </Item>
+        <Item onClick={() => setDarkMode(!darkMode)}>
+          <SettingsBrightnessOutlinedIcon />
+          <Text>{darkMode ? "Light" : "Dark"} Mode</Text>
+        </Item>
+      </SmWrapper>
     </Container>
   );
 };
