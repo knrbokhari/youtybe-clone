@@ -48,6 +48,9 @@ const Search = styled.div`
   border: 1px solid #ccc;
   border-radius: 3px;
   color: ${({ theme }) => theme.text};
+  @media (max-width: 767px) {
+    width: 30%;
+  }
 `;
 
 const Input = styled.input`
@@ -55,6 +58,7 @@ const Input = styled.input`
   background-color: transparent;
   outline: none;
   color: ${({ theme }) => theme.text};
+  width: 100%;
 `;
 
 const Button = styled.button`
@@ -78,6 +82,12 @@ const User = styled.div`
   color: ${({ theme }) => theme.text};
 `;
 
+const Text = styled.text`
+  @media (max-width: 560px) {
+    display: none;
+  }
+`;
+
 const Avatar = styled.img`
   width: 32px;
   height: 32px;
@@ -92,17 +102,19 @@ const Navbar = () => {
         <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
           <Logo>
             <Img src={MyTube} />
-            MyTube
+            <Text>MyTube</Text>
           </Logo>
         </Link>
         <Search>
           <Input placeholder="Search" />
           <SearchOutlinedIcon />
         </Search>
-        <Button>
-          <AccountCircleOutlinedIcon />
-          SIGN IN
-        </Button>
+        <Link to="/signin" style={{ textDecoration: "none", color: "inherit" }}>
+          <Button>
+            <AccountCircleOutlinedIcon />
+            SIGN IN
+          </Button>
+        </Link>
       </Wrapper>
     </Container>
   );
