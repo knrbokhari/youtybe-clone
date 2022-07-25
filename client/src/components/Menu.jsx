@@ -25,6 +25,9 @@ const Container = styled.div`
   top: 0;
   background-color: ${({ theme }) => theme.bgLighter};
   color: ${({ theme }) => theme.text};
+  @media (min-width: 550px) {
+    display: none;
+  }
 `;
 
 const Wrapper = styled.div`
