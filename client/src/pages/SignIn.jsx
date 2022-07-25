@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
 
@@ -68,6 +69,22 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/auth/signin", { name, password });
+      console.log(res.data);
+    } catch (err) {
+      //
+    }
+  };
+  const handleGoogleLogin = (e) => {
+    e.preventDefault();
+  };
+  const handleSignup = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -82,9 +99,9 @@ const SignIn = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button onClick="">Sign in</Button>
+        <Button onClick={handleLogin}>Sign in</Button>
         <Title>or</Title>
-        <Button onClick="">Signin with Google</Button>
+        <Button onClick={handleGoogleLogin}>Signin with Google</Button>
         <Title>or</Title>
         <Input
           placeholder="username"
@@ -96,7 +113,7 @@ const SignIn = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button>Sign up</Button>
+        <Button onClick={handleSignup}>Sign up</Button>
       </Wrapper>
       <More>
         English(USA)
