@@ -16,6 +16,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -93,18 +94,27 @@ const Menu = ({ darkMode, setDarkMode }) => {
   return (
     <Container>
       <LgWrapper>
-        <Item>
-          <HomeIcon />
-          Home
-        </Item>
-        <Item>
-          <ExploreOutlinedIcon />
-          Explore
-        </Item>
-        <Item>
-          <SubscriptionsOutlinedIcon />
-          Subscriptions
-        </Item>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <HomeIcon />
+            Home
+          </Item>
+        </Link>
+        <Link to="/trends" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <ExploreOutlinedIcon />
+            Explore
+          </Item>
+        </Link>
+        <Link
+          to="/subscriptions"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <Item>
+            <SubscriptionsOutlinedIcon />
+            Subscriptions
+          </Item>
+        </Link>
         <Hr />
 
         <Item>
@@ -171,22 +181,33 @@ const Menu = ({ darkMode, setDarkMode }) => {
         </Item>
       </LgWrapper>
       <SmWrapper>
-        <Item>
-          <HomeIcon />
-          <Text>Home</Text>
-        </Item>
-        <Item>
-          <ExploreOutlinedIcon />
-          <Text>Explore</Text>
-        </Item>
-        <Item>
-          <SubscriptionsOutlinedIcon />
-          <Text>Subscriptions</Text>
-        </Item>
-        <Item>
-          <VideoLibraryOutlinedIcon />
-          <Text>Library</Text>
-        </Item>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <HomeIcon />
+            <Text>Home</Text>
+          </Item>
+        </Link>
+        <Link to="/trends" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <ExploreOutlinedIcon />
+            <Text>Explore</Text>
+          </Item>
+        </Link>
+        <Link
+          to="/subscriptions"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <Item>
+            <SubscriptionsOutlinedIcon />
+            <Text>Subscriptions</Text>
+          </Item>
+        </Link>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <VideoLibraryOutlinedIcon />
+            <Text>Library</Text>
+          </Item>
+        </Link>
         <Item onClick={() => setDarkMode(!darkMode)}>
           <SettingsBrightnessOutlinedIcon />
           <Text>{darkMode ? "Light" : "Dark"} Mode</Text>

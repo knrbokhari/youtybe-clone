@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { format } from "timeago.js";
+import axios from "axios";
 
 const Container = styled.div`
-  width: ${(props) => props.type !== "sm" && "360px"};
+  width: ${(props) => props.type !== "sm" && "300px"};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
   cursor: pointer;
   display: ${(props) => props.type === "sm" && "flex"};
@@ -52,23 +54,47 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const Card = ({ type }) => {
+const Card = ({ type, video }) => {
+  const [channel, setChannel] = useState({});
+  const { title, imgUrl, views, createdAt, userId } = video;
+  const { name, img } = channel;
+
+  useEffect(() => {
+    const fetchChannel = async () => {
+      const res = await axios.get(`/users/find/${userId}`);
+      setChannel(res.data);
+    };
+    fetchChannel();
+  }, [userId]);
+
+  // console.log(channel.img);
+
   return (
     <Link to={`/video/1`} style={{ textDecoration: "none" }}>
       <Container type={type}>
         <Image
           type={type}
-          src="https://img.huffingtonpost.com/asset/5ee0ad5a250000e929eb30f7.jpeg?ops=scalefit_720_noupscale&format=webp"
+          src={`${
+            imgUrl
+              ? imgUrl
+              : "https://img.huffingtonpost.com/asset/5ee0ad5a250000e929eb30f7.jpeg?ops=scalefit_720_noupscale&format=webp"
+          }`}
         />
         <Details type={type}>
           <ChannelImage
             type={type}
-            src="https://img.freepik.com/free-vector/farmer-using-agricultural-technology_53876-120543.jpg?t=st=1658673992~exp=1658674592~hmac=09d06d86ae455b7136a815febc4c5de2cfb1fe2bfa8c4ca7ac08215bebe2756c&w=996"
+            src={
+              img
+                ? img
+                : "https://img.freepik.com/free-vector/farmer-using-agricultural-technology_53876-120543.jpg?t=st=1658673992~exp=1658674592~hmac=09d06d86ae455b7136a815febc4c5de2cfb1fe2bfa8c4ca7ac08215bebe2756c&w=996"
+            }
           />
           <Texts type={type}>
-            <Title title="full title">testing</Title>
-            <ChannelName title="Channel Name">Channel Name</ChannelName>
-            <Info>207K views • 5 months ago</Info>
+            <Title title={title}>{title}</Title>
+            <ChannelName title={name}>{name}</ChannelName>
+            <Info>
+              {views} views • {format(createdAt)}
+            </Info>
           </Texts>
         </Details>
       </Container>
