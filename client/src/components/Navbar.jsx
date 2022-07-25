@@ -4,6 +4,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import MyTube from "../img/logo.png";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: sticky;
@@ -88,10 +89,12 @@ const Navbar = () => {
   return (
     <Container>
       <Wrapper>
-        <Logo>
-          <Img src={MyTube} />
-          MyTube
-        </Logo>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Logo>
+            <Img src={MyTube} />
+            MyTube
+          </Logo>
+        </Link>
         <Search>
           <Input placeholder="Search" />
           <SearchOutlinedIcon />

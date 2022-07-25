@@ -26,10 +26,10 @@ function App() {
   const currentUser = false;
 
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      <Navbar />
-      <Container>
-        <BrowserRouter>
+    <BrowserRouter>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        <Navbar />
+        <Container>
           <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
           <Main>
             <Wrapper>
@@ -50,9 +50,9 @@ function App() {
               </Routes>
             </Wrapper>
           </Main>
-        </BrowserRouter>
-      </Container>
-    </ThemeProvider>
+        </Container>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
