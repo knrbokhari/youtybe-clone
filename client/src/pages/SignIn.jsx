@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
-import { auth, provider } from "../firebase";
+import { auth, provider } from "../firebase.init";
 import { signInWithPopup } from "firebase/auth";
 
 const Container = styled.div`
@@ -85,7 +85,6 @@ const SignIn = () => {
     }
   };
   const handleGoogleLogin = async (e) => {
-    e.preventDefault();
     dispatch(loginStart());
     signInWithPopup(auth, provider)
       .then((result) => {
