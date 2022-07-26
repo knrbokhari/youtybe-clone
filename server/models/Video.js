@@ -4,42 +4,42 @@ const VideoSchema = new mongoose.Schema(
   {
     userId: {
       type: String,
-      require: true,
+      required: true,
     },
     title: {
       type: String,
-      require: true,
+      required: true,
     },
     desc: {
       type: String,
-      require: true,
+      required: true,
     },
     imgUrl: {
-        type: String,
-        require: true,
+      type: String,
+      required: true,
     },
     videoUrl: {
-        type: String,
-        require: true,
+      type: String,
+      required: true,
     },
     views: {
-        type: Number,
-        default: 0,
+      type: Number,
+      default: 0,
     },
     tags: {
-        type: [String],
-        default: [],
+      type: [String],
+      default: [],
     },
     likes: {
-        type: [String],
-        default: [],
+      type: [String],
+      default: [],
     },
     dislikes: {
-        type: [String],
-        default: [],
+      type: [String],
+      default: [],
     },
   },
-  { timeseries: true }
+  { timestamps: true }
 );
 
 export default mongoose.model("Video", VideoSchema);
