@@ -145,12 +145,15 @@ const Video = () => {
   };
   const handleDislike = async () => {
     await axios.put(`/users/dislike/${currentVideo._id}`);
-    dispatch(dislike(currentUser._id))
+    dispatch(dislike(currentUser._id));
   };
 
-  const handleSub = async () => {};
-
-  //TODO: DELETE VIDEO FUNCTIONALITY
+  const handleSub = async () => {
+    currentUser.subscribedUsers.includes(channel._id)
+      ? await axios.put(`/users/unsub/${channel._id}`)
+      : await axios.put(`/users/sub/${channel._id}`);
+    dispatch(subscription(channel._id));
+  };
 
   return (
     <Container>
