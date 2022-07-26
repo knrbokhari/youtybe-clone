@@ -139,7 +139,10 @@ const Video = () => {
     fetchData();
   }, [path, dispatch]);
 
-  const handleLike = async () => {};
+  const handleLike = async () => {
+    await axios.put(`/users/like/${currentVideo._id}`);
+    dispatch(like(currentUser._id));
+  };
   const handleDislike = async () => {};
 
   const handleSub = async () => {};
@@ -150,7 +153,7 @@ const Video = () => {
     <Container>
       <Content>
         <VideoWrapper>
-          <VideoFrame src={currentVideo?.videoUrl} controls />
+          <VideoFrame src={`https://www.youtube.com/`} controls />
         </VideoWrapper>
         <Title>{currentVideo?.title}</Title>
         <Details>
