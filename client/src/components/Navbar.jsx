@@ -6,6 +6,7 @@ import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
 import MyTube from "../img/logo.png";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Upload from "./Upload";
 
 const Container = styled.div`
   position: sticky;
@@ -99,37 +100,39 @@ const Avatar = styled.img`
 const Navbar = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const [open, setOpen] = useState(false);
-  // console.log(currentUser);
 
   return (
-    <Container>
-      <Wrapper>
-        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-          <Logo>
-            <Img src={MyTube} />
-            <Text>MyTube</Text>
-          </Logo>
-        </Link>
-        <Search>
-          <Input placeholder="Search" />
-          <SearchOutlinedIcon />
-        </Search>
-        {currentUser ? (
-          <User>
-            <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
-            <Avatar src={currentUser?.img} />
-            {currentUser?.name}
-          </User>
-        ) : (
-          <Link to="signin" style={{ textDecoration: "none" }}>
-            <Button>
-              <AccountCircleOutlinedIcon />
-              SIGN IN
-            </Button>
+    <>
+      <Container>
+        <Wrapper>
+          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <Logo>
+              <Img src={MyTube} />
+              <Text>MyTube</Text>
+            </Logo>
           </Link>
-        )}
-      </Wrapper>
-    </Container>
+          <Search>
+            <Input placeholder="Search" />
+            <SearchOutlinedIcon />
+          </Search>
+          {currentUser ? (
+            <User>
+              <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
+              <Avatar src={currentUser?.img} />
+              {currentUser?.name}
+            </User>
+          ) : (
+            <Link to="signin" style={{ textDecoration: "none" }}>
+              <Button>
+                <AccountCircleOutlinedIcon />
+                SIGN IN
+              </Button>
+            </Link>
+          )}
+        </Wrapper>
+      </Container>
+      {open && <Upload setOpen={setOpen} />}
+    </>
   );
 };
 
