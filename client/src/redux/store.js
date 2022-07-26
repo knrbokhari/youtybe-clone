@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
+import videoReducer from "./videoSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: userReducer,
+    user: userReducer,
+    video: videoReducer,
   },
 });
